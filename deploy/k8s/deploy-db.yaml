@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+    name: mysql-deploy
+    labels:
+      name: mysql-deploy
+      app: springboot-app-deploy
+spec: 
+  template: 
+      metadata:
+        name: mysql-pod
+        labels:
+          name: mysql-pod
+          app: springboot-app
+      spec:
+        containers:
+        - name: mysql
+          image: mysql:5.6
+          env:
+          - name: MYSQL_ALLOW_EMPTY_PASSWORD
+            value: "true"
+          ports:
+          - containerPort: 3306
+  replicas: 1
+  selector:
+    matchLabels:
+        name: mysql-pod
+        app: springboot-app

@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+     
+     name: springboot-app
+     labels:
+        app: springboot-app
+
+spec:
+  replicas: 1
+  template: 
+        metadata: 
+            name: springboot-pod-app
+            labels: 
+                app: springboot-app
+        spec:
+           containers:
+             -  name: springboot-cont-app
+                image: vsiraparapu/myspringapp:latest
+                ports:
+                 - containerPort: 8080
+  selector:
+        matchLabels:
+            app: springboot-app
+          
+            
+      
