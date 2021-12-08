@@ -1,0 +1,43 @@
+pipeline {
+    agent any
+    stages {
+        stage ("build stsge"){
+            steps {
+                script {
+                    sh """
+                         echo "BUIlDED" 
+                         mkdir tarun-spring-boot
+                         cd tarun-spring-boot
+                         """
+                }
+            }
+        }
+        stage ("sourcecode check"){
+            steps {
+             sh "git clone https://github.com/taru143/spring-boot-realworld-example-app.git"
+            }
+        }
+        stage ("test stage"){
+            steps {
+                script {
+                    sh """
+                         echo "Test " 
+                         cd spring-boot-realworld-example-app
+                         ./gradlew  build
+                         ./gradlew  test
+                         """
+                }
+            }
+        }
+        stage ("Docker build"){
+            steps {
+                script {
+                    sh """
+                         ls -lrth
+                         docker build -t bailapudi .
+                         """
+                }
+            }
+        }
+    }
+}
