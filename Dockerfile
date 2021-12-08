@@ -34,3 +34,4 @@ EXPOSE 8080
 #COPY --from=0 /home/gradle/project/build/libs/project-0.0.1-SNAPSHOT.jar .
 
 #ENTRYPOINT java -jar project-0.0.1-SNAPSHOT.jar
+ 
