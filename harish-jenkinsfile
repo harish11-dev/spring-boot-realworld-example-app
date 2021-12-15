@@ -14,10 +14,10 @@ pipeline {
         }
         stage ("Sourcecode Check"){
             steps {
-             sh "git clone https://github.com/taru143/spring-boot-realworld-example-app.git"
+             sh "https://github.com/harish11-dev/spring-boot-realworld-example-app.git"
             }
         }
-        stage ("test stage"){
+        stage ("Test Stage"){
             steps {
                 script {
                     sh """
@@ -29,12 +29,12 @@ pipeline {
                 }
             }
         }
-        stage ("Docker build"){
+        stage ("Docker Build"){
             steps {
                 script {
                     sh """
                          ls -lrth
-                         docker build -t bailapudi .
+                         docker build harishdocker2021/har-springapp .
                          """
                 }
             }
